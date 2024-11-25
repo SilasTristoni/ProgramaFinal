@@ -5,15 +5,12 @@ public class Localidade {
     private String descricao;
     private int vagas;
     static ArrayList<Localidade> locais = new ArrayList<>();
-    
-    public Localidade(
-        int idLocal,
-        String descricao,
-        int vagas
-    ){
-        this.idLocal=idLocal;
-        this.descricao=descricao;
-        this.vagas=vagas;
+
+    public Localidade(int idLocal, String descricao, int vagas) {
+        this.idLocal = idLocal;
+        this.descricao = descricao;
+        this.vagas = vagas;
+        locais.add(this); // Adiciona o local à lista estática
     }
 
     public int getIdLocal() {
@@ -42,9 +39,5 @@ public class Localidade {
 
     public static ArrayList<Localidade> getLocais() {
         return locais;
-    }
-
-    public static void setLocais(ArrayList<Localidade> locais) {
-        Localidade.locais = locais;
     }
 }
