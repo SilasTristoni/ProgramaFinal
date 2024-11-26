@@ -6,18 +6,18 @@ public class Evento {
     private String nomeEvento;
     private String descricao;
     private LocalDate data;
-    private Localidade local;
-    private Organizador organizador;
+    private int idLocalEvento;
+    private int idOrganizadorEvento;
     private ArrayList<Participante> participantes;
     static ArrayList<Evento> eventos = new ArrayList<>();
 
-    public Evento(int idEvento, String nomeEvento, String descricao, LocalDate data, Localidade local, Organizador organizador) {
+    public Evento(int idEvento, String nomeEvento, String descricao, LocalDate data, int idLocalEvento, int idOrganizadorEvento) {
         this.idEvento = idEvento;
         this.nomeEvento = nomeEvento;
         this.descricao = descricao;
         this.data = data;
-        this.local = local;
-        this.organizador = organizador;
+        this.idLocalEvento = idLocalEvento;
+        this.idOrganizadorEvento = idOrganizadorEvento;
         this.participantes = new ArrayList<>();
         eventos.add(this); // Adiciona o evento à lista estática
     }
@@ -38,12 +38,12 @@ public class Evento {
         return data;
     }
 
-    public Localidade getLocal() {
-        return local;
+    public int getLocal() {
+        return idOrganizadorEvento;
     }
 
-    public Organizador getOrganizador() {
-        return organizador;
+    public int getOrganizador() {
+        return idLocalEvento;
     }
 
     public ArrayList<Participante> getParticipantes() {

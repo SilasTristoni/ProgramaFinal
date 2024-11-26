@@ -12,7 +12,7 @@ public class Main {
             System.out.println("3. Cadastrar Participante");
             System.out.println("4. Cadastrar Evento");
             System.out.println("5. Listar Eventos");
-            System.out.println("6. Adicionar Participante ao Evento");
+            System.out.println("6. Enviar notificação");
             System.out.println("7. Listar Participantes de um Evento");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
@@ -22,49 +22,46 @@ public class Main {
             switch (opcao) {
                 case 1:
                     System.out.print("ID do Local: ");
-                    int id = scanner.nextInt();
+                    int idLocal = scanner.nextInt();
                     scanner.nextLine();
                     System.out.print("Descrição do Local: ");
                     String descricao = scanner.nextLine();
                     System.out.print("Capacidade (vagas): ");
                     int capacidade = scanner.nextInt();
-                    new Localidade(id, descricao, capacidade);
+                    new Localidade(idLocal, descricao, capacidade);
                     System.out.println("Local cadastrado com sucesso!");
                     break;
                 case 2:
                     System.out.print("ID do Organizador: ");
-                    int id = scanner.nextInt();
+                    int idOrganizador = scanner.nextInt();
                     scanner.nextLine();
                     System.out.print("Nome do Organizador: ");
-                    String nome = scanner.nextLine();
+                    String nomeOrganizador = scanner.nextLine();
                     System.out.print("E-mail do Organizador: ");
-                    String email = scanner.nextLine();
-                    new Organizador(id, nome, email);
+                    String emailOrganizador = scanner.nextLine();
+                    new Organizador(idOrganizador, nomeOrganizador, emailOrganizador);
                     System.out.println("Organizador cadastrado com sucesso!");
                     break;
                 case 3:
                     System.out.print("ID do Participante: ");
-                    int id = scanner.nextInt();
+                    int idParticipante = scanner.nextInt();
                     scanner.nextLine();
                     System.out.print("Nome do Participante: ");
-                    String nome = scanner.nextLine();
+                    String nomeParticipante = scanner.nextLine();
                     System.out.print("Telefone do Participante: ");
-                    String telefone = scanner.nextLine();
-                    new Participante(id, nome, telefone);
+                    String telefoneParticipante = scanner.nextLine();
+                    new Participante(idParticipante, nomeParticipante, telefoneParticipante);
                     System.out.println("Participante cadastrado com sucesso!");
                     break;
                 case 4:
-                    criarEvento(scanner);
                     break;
                 case 5:
                     System.out.println("\n---- LISTA DE EVENTOS ----");
                     Evento.eventos.forEach(System.out::println);
                     break;
                 case 6:
-                    adicionarParticipanteAoEvento(scanner);
                     break;
                 case 7:
-                    listarParticipantesDeEvento(scanner);
                     break;
                 case 0:
                     System.out.println("Saindo...");
