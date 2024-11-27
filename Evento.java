@@ -7,7 +7,7 @@ public class Evento {
     private String data;
     private int idLocalEvento;
     private int idOrganizadorEvento;
-    private int totalParticipantes;
+    private ArrayList<EventoParticipante> participantes;
     static ArrayList<Evento> eventos = new ArrayList<>();
 
     public Evento(int idEvento, String nomeEvento, String descricaoEvento, String data, int idLocalEvento, int idOrganizadorEvento) throws Exception {
@@ -22,7 +22,7 @@ public class Evento {
         this.data = data;
         this.idLocalEvento = idLocalEvento;
         this.idOrganizadorEvento = idOrganizadorEvento;
-        this.totalParticipantes = 0;
+        this.participantes = new ArrayList<EventoParticipante>();
         eventos.add(this);
     }
 
@@ -50,8 +50,12 @@ public class Evento {
         return idOrganizadorEvento;
     }
 
-    public void adicionarParticipante() {
-        totalParticipantes++;
+    public void addParticipante(EventoParticipante participante) {
+        this.participantes.add(participante);
+    }
+
+    public ArrayList<EventoParticipante> getParticipantes() {
+        return this.participantes;
     }
 
     static Evento buscarEventoPorId(int id) {
