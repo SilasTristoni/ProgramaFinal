@@ -10,7 +10,7 @@ public class Localidade {
         this.idLocal = idLocal;
         this.descricao = descricao;
         this.vagas = vagas;
-        locais.add(this); // Adiciona o local à lista estática
+        locais.add(this);
     }
 
     public int getIdLocal() {
@@ -37,7 +37,30 @@ public class Localidade {
         this.vagas = vagas;
     }
 
-    public static ArrayList<Localidade> getLocais() {
-        return locais;
+    static void verificaId(int id) throws Exception {
+        for (Localidade localPrint : locais) {
+            if (localPrint.idLocal == id) {
+                return;
+            }
+        }
+        throw new Exception("Localidade não encontrada");
+    }
+    
+    static boolean verificaIdRepetido(int id) {
+        for (Localidade localPrint : locais) {
+            if (localPrint.idLocal == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    static Localidade buscaLocalidade(int id) {
+        for (Localidade localPrint : locais) {
+            if (localPrint.idLocal == id) {
+                return localPrint;
+            }
+        }
+        return null;
     }
 }

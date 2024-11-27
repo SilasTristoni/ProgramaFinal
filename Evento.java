@@ -1,25 +1,29 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Evento {
     private int idEvento;
     private String nomeEvento;
-    private String descricao;
-    private LocalDate data;
+    private String descricaoEvento;
+    private String data;
     private int idLocalEvento;
     private int idOrganizadorEvento;
-    private ArrayList<Participante> participantes;
+    private int totalParticipantes;
     static ArrayList<Evento> eventos = new ArrayList<>();
 
-    public Evento(int idEvento, String nomeEvento, String descricao, LocalDate data, int idLocalEvento, int idOrganizadorEvento) {
+    public Evento(int idEvento, String nomeEvento, String descricaoEvento, String data, int idLocalEvento, int idOrganizadorEvento) throws Exception {
+        for (Evento evento : eventos) {
+            if (evento.idEvento == idEvento) {
+                throw new Exception("Já existe um evento com este ID.");
+            }
+        }
         this.idEvento = idEvento;
         this.nomeEvento = nomeEvento;
-        this.descricao = descricao;
+        this.descricaoEvento = descricaoEvento;
         this.data = data;
         this.idLocalEvento = idLocalEvento;
         this.idOrganizadorEvento = idOrganizadorEvento;
-        this.participantes = new ArrayList<>();
-        eventos.add(this); // Adiciona o evento à lista estática
+        this.totalParticipantes = 0;
+        eventos.add(this);
     }
 
     public int getIdEvento() {
@@ -30,23 +34,41 @@ public class Evento {
         return nomeEvento;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescricaoEvento() {
+        return descricaoEvento;
     }
 
-    public LocalDate getData() {
+    public String getData() {
         return data;
     }
 
-    public int getLocal() {
-        return idOrganizadorEvento;
-    }
-
-    public int getOrganizador() {
+    public int getLocalEvento() {
         return idLocalEvento;
     }
 
-    public ArrayList<Participante> getParticipantes() {
-        return participantes;
+    public int getOrganizadorEvento() {
+        return idOrganizadorEvento;
+    }
+
+    public void adicionarParticipante() {
+        totalParticipantes++;
+    }
+
+    static Evento buscarEventoPorId(int id) {
+        for (Evento evento : eventos) {
+            if (evento.idEvento == id) {
+                return evento;
+            }
+        }
+        return null;
+    }
+
+    static void validarIdEvento(int id) throws Exception {
+        for (Evento eventoPrint : eventos) {
+            if (eventoPrint.idEvento == id) {
+                return;
+            }
+        }
+        throw new Exception("Evento não encontrado");
     }
 }
